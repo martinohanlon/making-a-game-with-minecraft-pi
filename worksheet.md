@@ -8,15 +8,22 @@ If you have already completed ["Getting Started With Programming The Minecraft W
 
 ## Whac-a-Block
 
-The game you are going to create is called "Whac-a-Block", inspired by the original arcade game ["Whac-a-Mole"](http://en.wikipedia.org/wiki/Whac-A-Mole), the objective of the game is to whack (or hit them with a sword) the blocks that light up as glowstone and turn them back to stone.  You will earn points for each block you turn back to stone and the game is over when all the blocks have been turned into glowstone.
+The game you are going to create is called "Whac-a-Block", inspired by the original arcade game ["Whac-a-Mole"](http://en.wikipedia.org/wiki/Whac-A-Mole), the objective of the game is to whack (or hit them with a sword) the blocks that light up as glowstone and turn them back to stone. You will earn points for each block you turn back to stone and the game is over when all the blocks have been turned into glowstone.
 
 TODO - picture of whac-a-block
+
+This project has been split into 5 parts:
+1. Create the program - starting your Minecraft Python program and making sure everything is working
+1. Build the game board - creating the code which will make game board appear in front of the player
+1. Turn the blocks on - coding the functions to turn the blocks randomly into glowstone
+1. Whac blocks - turn the blocks back to stone when the player hits then
+1. Game over - the game is over, how many points did you score.
 
 ### Create the program
 
 Open IDLE (not IDLE3) by using the icon on the desktop.
 
-When the Python Shell appears, create a new program using `File > New Window`.  You may also want to save your program now using `File > Save`.
+When the Python Shell appears, create a new program using `File > New Window`. You may also want to save your program now using `File > Save`.
 
 Import the python modules you are going to need for this program:
 - mcpi.minecraft - needed to interact with Minecraft: Pi Edition
@@ -56,13 +63,13 @@ The game board will be created just in front of the player, so the first step is
 pos = mc.player.getTilePos()
 ```
 
-The position is then used with the setBlocks() function to create the game board out of stone.
+The players position is then used with the setBlocks() function to create the game board out of stone.
 
 TODO - picture of game board, showing position and the distances to the board
 
 ```python
-mc.setBlocks(pos.x - 1, pos.y, pos.z,
-             pos.x + 1, pos.y + 2, pos.z,
+mc.setBlocks(pos.x - 1, pos.y, pos.z + 3,
+             pos.x + 1, pos.y + 2, pos.z + 3,
              block.STONE.id)
 ```
 
@@ -70,9 +77,91 @@ Run the program again you should see the game board appear directly infront of t
 
 ### Turn the blocks on
 
-### Whack blocks
+Next you are going to create the code which will turn the stone blocks to glowstone (and light them up). The blocks will turn on in randomly so you will need to use the ```random.randint(start, end)``` function to pick the random block on the game board.
+
+Create a variable called `blocksLit` which will hold the number of blocks which are currently lit (i.e. turned into glowstone) and a variable called `points` which will hold how many points the player has scored.  As its the start of the game set them both to 0.
+
+```python
+blocksLit = 0
+points = 0
+```
+
+Your program will need to loop until its game over, or in this case, until all the blocks are lit.
+
+Create a while loop which will continue until the 'blocksLit' variable is 9 (i.e. all the blocks have been turned to glowstone) and put a small delay into the program (0.2 seconds), otherwise the program will run so fast you wont be able to whac any blocks!
+
+```python
+while blocksLit < 9:
+    time.sleep(0.2)
+```
+
+From this point the code will be indented under this while loop.
+
+The next step is to randomly turn a block into glowstone. This is more difficult than it sounds because what happens if the block you randomly choose is already glowstone?  Your code needs to be able to deal with this. The method you will is a really simple one; the code create a random position, it will check to see if that block is already glowstone, if it is, it will try again and create a new random position - it will continue to do this until it finds a block which is still unlit.
+
+Create a variable called `lightCreated`, set it to `False` and create a while loop which will continue until `lightCreated` is set to `True`.  You should also increase the number of blocksLit by 1, to show that another block will be lit.
+
+```python
+    blocksLit = blocksLit + 1
+    lightCreated = False
+    while not lightCreated:
+```
+
+Once a block has been successfully turned to glowstone, `lightCreated` will be set to `True` and the loop will exit. 
+
+Inside this loop use ```random.randint(start, end)``` to create a random x and y position on the game board.
+
+TODO - picture of the gameboard with one glowstone block lit showing it selecting a random position
+
+```python
+        xPos = pos.x + random.randint(-1,1)
+        yPos = pos.y + random.randint(0,2)
+        zPos = pos.z + 3
+```
+
+Use `getBlocks(x,y,z)` and an `if` statement to check to see if the block at the random position is STONE, if it is, set it to glowstone using setBlocks(x,y,z,blockId) and make `lightCreated = True`, otherwise the code will go back to the start of the loop and find another random position.
+
+```python
+        if mc.getBlock(xPos, yPos, zPos) == block.STONE.id:
+            mc.setBlock(xPos, yPos, zPos, block.GLOWSTONE_BLOCK.id)
+            lightCreated = True
+```
+
+Note - Rather than using the id numbers of blocks (e.g. stone = 1, glowstone = 89) you can use the block module, which holds all the blocks id's and their names (e.g. block.STONE.id).
+
+Run the program, by click Run > Run Module in IDLE or pressing F5, you should see the game board appear, the stone blocks should then 1 by 1 turn into glowstone and the program should end when all 9 have been lit.
+
+### Whac blocks
+The player will whac blocks by hitting them (right clicking) while holding a sword.  The Minecraft API has functions which allow you to find out what blocks have been hit, these are known as block hit *events* and using the function `events.pollBlockHits()` you can get a list from Minecraft of the events that have occured (i.e. blocks which have been hit) since it was last called.
+
+You will use events to find out the position of the block which has been hit, before using `getBlock(x,y,z)` to see if the block hit was glowstone, if it was you will then use `setBlock(x,y,z,blockId)` to turn it back to stone, reduce the number of blocks lit by 1 and increase the player's score.
+
+Indented under the `while blocksLit < 9` loop, create the following code to loop through the block hit events list.
+
+```python
+    for hitBlock in mc.events.pollBlockHits():
+```
+
+Note - The hitBlock variable holds the *event* which has happened and it contains lots of information including which block was hit, what face it was hit on and who hit it, you can see the information in the Python Shell by using `print hitBlock`.
+
+Use `getBlocks(x,y,z)`, the `hitBlock` event data and an `if` statement to see if the block hit was glowstone.  If it was, use `setBlocks(x,y,z,blockId)` to set it back to stone, minus 1 from the `blocksLit` variable and add 1 to the `points` variable.
+
+        if mc.getBlock(hitBlock.pos.x, hitBlock.pos.y, hitBlock.pos.z) == block.GLOWSTONE_BLOCK.id:
+            mc.setBlock(hitBlock.pos.x, hitBlock.pos.y, hitBlock.pos.z, block.STONE.id)
+            blocksLit = blocksLit - 1
+            points = points + 1 
+
+Run the program, the game board should appear and this time when the blocks are lit, if you hit them (right clicking with a sword) they should turn off.
 
 ### Game over
+
+The last step in the game is to let the player know its "Game Over" and to tell them how many points they scored.  The never last line of the program should be.
+
+```python
+mc.postToChat("Game Over - points = " + str(points))
+```
+
+TODO - picture of game over
 
 ### Stretch - Adding Game Play!
 
