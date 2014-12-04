@@ -46,7 +46,7 @@ mc = minecraft.Minecraft.create()
 mc.postToChat("Minecraft Whac-a-Block")
 ```
 
-You can run the program now, it wont do a much, but if everything is setup correctly you should see "Minecraft Whac-a-Mole" displayed in the minecraft chat window.
+You can run the program now, it wont do a much, but if everything is setup correctly you should see "Minecraft Whac-a-Block" displayed in the minecraft chat window.
 
 If you haven't done so already, startup Minecraft and create/open a world.
 Run your program by clicking `Run > Run Module` in IDLE or pressing F5.
@@ -58,7 +58,7 @@ Any errors will appear in red in the Python Shell window.
 
 The next step is to create the game board, 3x3 stone blocks, which will turn randomly turn into glowstone and light up.
 
-The game board will be created just in front of the player, so the first step is to get the players position using player.getTilePos().  
+The game board will be created just in front of the player, so the first step is to get the players position using `player.getTilePos()`.  
 
 ```python
 pos = mc.player.getTilePos()
@@ -130,7 +130,7 @@ Inside this loop use ```random.randint(start, end)``` to create a random x (betw
 
 ![A random block lit up](images/minecraft-random-block.png)
 
-Use `getBlocks(x,y,z)` and an `if` statement to check to see if the block at the random position is STONE, if it is, set it to glowstone using setBlocks(x,y,z,blockId) and make `lightCreated = True`, otherwise the code will go back to the start of the loop and find another random position.
+Use `getBlock(x,y,z)` and an `if` statement to check to see if the block at the random position is STONE, if it is, set it to glowstone using setBlock(x,y,z,blockId) and make `lightCreated = True`, otherwise the code will go back to the start of the loop and find another random position.
 
 ```python
         if mc.getBlock(xPos, yPos, zPos) == block.STONE.id:
@@ -138,14 +138,14 @@ Use `getBlocks(x,y,z)` and an `if` statement to check to see if the block at the
             lightCreated = True
 ```
 
-Note - Rather than using the id numbers of blocks (e.g. stone = 1, glowstone = 89) you can use the block module, which holds all the blocks id's and their names (e.g. block.STONE.id).
+Note - Rather than using the id numbers of blocks (e.g. stone = 1, glowstone = 89) you can use the block module, which holds all the blocks id's and their names (e.g. `block.STONE.id`).
 
 Run the program, by click `Run > Run Module` in IDLE or pressing F5, you should see the game board appear, the stone blocks should then 1 by 1 turn into glowstone and the program should end when all 9 have been lit.
 
 ### Whac blocks
 The player will whac blocks by hitting them (right clicking) while holding a sword.  The Minecraft API has functions which allow you to find out what blocks have been hit, these are known as block hit *events* and using the function `events.pollBlockHits()` you can get a list from Minecraft of the events that have occured (i.e. blocks which have been hit) since it was last called.
 
-You will use events to find out the position of the block which has been hit, before using `getBlock(x,y,z)` to see if the block hit was glowstone, if it was you will then use `setBlock(x,y,z,blockId)` to turn it back to stone, reduce the number of blocks lit by 1 and increase the player's score.
+You will use events to find out the position of the block which has been hit, before using `getBlock(x,y,z)` to see if the block hit was glowstone, if it was you will then use `setBlock(x,y,z,blockId)` to turn it back to stone before reducing the number of blocks lit and increasing the player's score.
 
 Indented under the `while blocksLit < 9` loop, create the following code to loop through the block hit events list.
 
@@ -155,7 +155,7 @@ Indented under the `while blocksLit < 9` loop, create the following code to loop
 
 Note - The hitBlock variable holds the *event* which has happened and it contains lots of information including which block was hit, what face was hit and who hit it, you can see the information in the Python Shell by using `print hitBlock`.
 
-Use `getBlock(x,y,z)`, the `hitBlock` event data and an `if` statement to see if the block hit was glowstone.  If it was, use `setBlock(x,y,z,blockId)` to set it back to stone, minus 1 from the `blocksLit` variable and add 1 to the `points` variable.
+Use `getBlock(x,y,z)`, the `hitBlock` event data and an `if` statement to see if the block hit was glowstone.  If it was, use `setBlock(x,y,z,blockId)` to set it back to stone before reducing the `blocksLit` variable and adding 1 to the players `points`.
 
         if mc.getBlock(hitBlock.pos.x, hitBlock.pos.y, hitBlock.pos.z) == block.GLOWSTONE_BLOCK.id:
             mc.setBlock(hitBlock.pos.x, hitBlock.pos.y, hitBlock.pos.z, block.STONE.id)
@@ -176,13 +176,15 @@ mc.postToChat("Game Over - points = " + str(points))
 
 ### Stretch - Adding Game Play!
 
-This might be the end of this worksheet, but it doesn't have to be for this game.  At the moment the game play is pretty basic, there is a lot you can do now you have the basic program setup to make it your own.  Here are some idea's to get your started.
+This might be the end of this worksheet, but it doesn't have to be for this game.  
 
-The difficulty of the game is set by the how long the program waits before lighting another block, `time.sleep(0.2)`, by increasing this time you make the change easier, decreasing it you make the game harder.  Experiment and see what works best for you.
+At the moment the game play is pretty basic, there is a lot you can do now you have the basic program setup to make it your own.  Here are some idea's to get your started:
 
-What about if the player gets things wrong and hits a stone block instead of a glowstone block?  Can you change the program so that if the player hits a stone block it lights the block?  This would make the player have to think more about what block they are hitting and increase the skill required.
+1. The difficulty of the game is set by the how long the program waits before lighting another block, `time.sleep(0.2)`, by increasing this time you make the change easier, decreasing it you make the game harder.  Experiment and see what works best for you.
 
-It is usual in video games for them to start easier and get harder, can you make the game start easier and the more points you score the harder it gets?
+2. What about if the player gets things wrong and hits a stone block instead of a glowstone block?  Can you change the program so that if the player hits a stone block it lights the block?  This would make the player have to think more about what block they are hitting and increase the skill required.
+
+3. It is usual in video games for them to start easier and get harder, can you make the game start easier and the more points you score the harder it gets?
 
 ## API reference
 
