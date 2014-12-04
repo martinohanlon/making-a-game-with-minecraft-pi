@@ -180,7 +180,7 @@ This might be the end of this worksheet, but it doesn't have to be for this game
 
 At the moment the game play is pretty basic, there is a lot you can do now you have the basic program setup to make it your own.  Here are some idea's to get your started:
 
-1. The difficulty of the game is set by the how long the program waits before lighting another block, `time.sleep(0.2)`, by increasing this time you make the change easier, decreasing it you make the game harder.  Experiment and see what works best for you.
+1. The difficulty of the game is set by the how long the program waits before lighting another block, `time.sleep(0.2)`, by increasing this time you make the game easier, decreasing it will make the game harder.  Experiment and see what works best for you.
 
 2. What about if the player gets things wrong and hits a stone block instead of a glowstone block?  Can you change the program so that if the player hits a stone block it lights the block?  This would make the player have to think more about what block they are hitting and increase the skill required.
 
