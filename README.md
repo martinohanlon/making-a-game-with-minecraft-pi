@@ -4,6 +4,8 @@ Minecraft is a popular sandbox open world-building game. A free version of Minec
 
 If you have already completed ["Getting Started With Programming The Minecraft World"](http://www.raspberrypi.org/learning/getting-started-with-minecraft-pi/) and want to do more, how about creating your own game in Minecraft, a "game in a game"!
 
+The game you are going to create is called "Whac-a-Block", inspired by the original arcade game "Whac-a-Mole", the objective of the game is to whack (or hit with a sword) the blocks that light up as glowstone and turn them back to stone. 
+
 ![Minecraft Pi banner](images/minecraft-pi-banner.png)
 
 ## Requirements
