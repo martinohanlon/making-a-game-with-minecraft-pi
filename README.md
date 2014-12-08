@@ -27,6 +27,7 @@ If you are new to programming Minecraft: Pi Edition, you should complete ["Getti
 ## The worksheet	
 
 - [The worksheet](worksheet.md)
+- (Optional) Final version of Python code [minecraft-whac.py](code/minecraft-whac.py)
 
 ## Licence
 
