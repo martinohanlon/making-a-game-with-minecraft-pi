@@ -36,7 +36,7 @@ import time
 ```
 
 - `mcpi.minecraft` - needed to interact with Minecraft: Pi Edition
-- `mcpi.block` - needed to work with Minecraft blocks
+- `mcpi.block` - needed to refer to blocks by name rather than ID
 - `random` - used to create random numbers
 - `time` - used to put delays into your program
 
