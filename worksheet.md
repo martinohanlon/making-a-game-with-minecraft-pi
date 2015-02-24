@@ -176,7 +176,7 @@ mc.postToChat("Game Over - points = " + str(points))
 
 ![Game over](images/minecraft-game-over.png)
 
-## Stretch - Adding game play!
+## What's next?
 
 It might be the end of this worksheet, but it doesn't have to be the end of this game.  
 
@@ -188,6 +188,6 @@ At the moment the gameplay is pretty basic, and there's a lot you can do now you
 
 1. It is common for video games to start easy and get harder. Can you make the game start easier and the more points you score, the harder it gets?
 
-## API reference
+### API reference
 
 For more extensive documentation of functions, and a full list of block IDs, see an API reference at [stuffaboutcode.com](http://www.stuffaboutcode.com/p/minecraft-api-reference.html).
