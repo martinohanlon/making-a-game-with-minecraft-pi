@@ -139,7 +139,7 @@ Use `getBlock(x,y,z)` and an `if` statement to check if the block at the random 
 
 **Note**: Rather than using the ID numbers of blocks (e.g. stone = 1, glowstone = 89), you can use the `block` module, which holds all the block IDs and their names (e.g. `block.STONE.id`).
 
-Run the program by clicking `Run > Run Module` in IDLE or pressing F5; you should see the game board appear. The stone blocks should then, one by one, turn into glowstone and the program should end when all nine are lit.
+Run the program by clicking `Run > Run Module` in IDLE or by pressing F5; you should see the game board appear. The stone blocks should then, one by one, turn into glowstone and the program should end when all nine are lit.
 
 ## Whack blocks
 
