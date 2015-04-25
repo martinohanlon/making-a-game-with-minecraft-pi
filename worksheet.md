@@ -1,8 +1,8 @@
 # Create a "Whac-a-Block" game in Minecraft
 
-Minecraft is a popular sandbox open world-building game. A free version of Minecraft is available for the Raspberry Pi; it also comes with a programming interface. This means you can write commands and scripts in Python code to build things in the game automatically. It's a great way to learn Python!  
+Minecraft is a popular sandbox open-world building game. A free version of Minecraft is available for the Raspberry Pi; it also comes with a programming interface. This means you can write commands and scripts in Python code to build things in the game automatically. It's a great way to learn Python!  
 
-If you have already completed ["Getting Started With Programming The Minecraft World"](http://www.raspberrypi.org/learning/getting-started-with-minecraft-pi/) and want to do more, how about creating your own game in Minecraft, a "game in a game"?
+If you have already completed ["Getting Started With Programming The Minecraft World"](http://www.raspberrypi.org/learning/getting-started-with-minecraft-pi/) and want to do more, how about creating your own game in Minecraft, a "game within a game"?
 
 ![Minecraft Pi banner](images/minecraft-pi-banner.png)
 
@@ -176,11 +176,11 @@ mc.postToChat("Game Over - points = " + str(points))
 
 ![Game over](images/minecraft-game-over.png)
 
-## What's next?
+## What next?
 
-It might be the end of this worksheet, but it doesn't have to be the end of this game.  
+This might be the end of the worksheet, but it doesn't have to be the end of the game.  
 
-At the moment the gameplay is pretty basic, and there's a lot you can do now you have the basic program set up to make it your own. Here are some ideas to get you started:
+At the moment the gameplay is pretty simple, and there's a lot you can do, now you have the basic program set up, to make it your own. Here are some ideas to get you started:
 
 1. The difficulty of the game is set by the how long the program waits before lighting another block, currently `time.sleep(0.2)`. By increasing this time you make the game easier, and decreasing it will make the game harder. Experiment and see what works best for you.
 
