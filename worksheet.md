@@ -35,10 +35,10 @@ import random
 import time
 ```
 
-- `mcpi.minecraft` - needed to interact with Minecraft: Pi Edition
-- `mcpi.block` - needed to refer to blocks by name rather than ID
-- `random` - used to create random numbers
-- `time` - used to put delays into your program
+- `mcpi.minecraft` is needed to interact with Minecraft: Pi Edition
+- `mcpi.block` is needed to refer to blocks by name rather than ID
+- `random` is used to create random numbers
+- `time` is used to put delays into your program
 
 Create a connection to Minecraft: Pi Edition and post a message to the chat window:
 
@@ -51,7 +51,7 @@ You can run the program now. It won't do much, but if everything is set up corre
 
 ![Message in Minecraft chat window](images/minecraft-message-in-chat.png)
 
-If you haven't done so already, start up Minecraft and create/open a world. Run your program by clicking `Run > Run Module` in IDLE or pressing F5. Any errors will appear in red in the Python shell window.
+If you haven't done so already, start up Minecraft and create/open a world. Run your program by clicking `Run > Run Module` in IDLE or by pressing F5. Any errors will appear in red in the Python shell window.
 
 ## Build the game board
 
@@ -105,7 +105,7 @@ while blocksLit < 9:
 
 From now on, the code will be indented under this `while` loop.
 
-The next step is to randomly turn a block into glowstone. This is more difficult than it sounds; what happens if the block you randomly choose is already glowstone? Your code needs to be able to deal with this. 
+The next step is to randomly turn a block into glowstone. This is more difficult than it sounds: what happens if the block you randomly choose is already glowstone? Your code needs to be able to deal with this. 
 
 The method you will use is a really simple one. The code creates a random position, checks to see if that block is stone, and if it isn't (i.e. it's glowstone), it tries again and creates a new random position. The code will continue to do this until it finds a block which is still unlit.
 
