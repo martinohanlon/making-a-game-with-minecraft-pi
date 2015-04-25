@@ -18,7 +18,7 @@ This project is split into five parts.
 2. Build the game board: creating the code which will make game board appear in front of the player.
 3. Turn the blocks on: coding the functions to turn the blocks randomly into glowstone.
 4. Whack blocks: turn the blocks back to stone when the player hits them.
-5. Game over: How many points did you score?
+5. Game over: how many points did you score?
 
 ## Create the program
 
