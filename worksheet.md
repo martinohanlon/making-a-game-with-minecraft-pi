@@ -12,13 +12,13 @@ The game you are going to create is called "Whac-a-Block", inspired by the origi
 
 ![Minecraft Whac-a-Block](images/minecraft-whac-a-block.png)
 
-This project is split into five parts:
+This project is split into five parts.
 
-1. Create the program - starting your Minecraft Python program and making sure everything is working.
-2. Build the game board - creating the code which will make game board appear in front of the player.
-3. Turn the blocks on - coding the functions to turn the blocks randomly into glowstone.
-4. Whack blocks - turn the blocks back to stone when the player hits them.
-5. Game over - the game is over, how many points did you score?
+1. Create the program: starting your Minecraft Python program and making sure everything is working.
+2. Build the game board: creating the code which will make game board appear in front of the player.
+3. Turn the blocks on: coding the functions to turn the blocks randomly into glowstone.
+4. Whack blocks: turn the blocks back to stone when the player hits them.
+5. Game over: How many points did you score?
 
 ## Create the program
 
