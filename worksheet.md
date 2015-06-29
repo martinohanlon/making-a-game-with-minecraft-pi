@@ -1,8 +1,8 @@
-# Making a game with Minecraft Pi
+# Create a "Whac-a-Block" game in Minecraft
 
-Minecraft is a popular sandbox open world-building game. A free version of Minecraft is available for the Raspberry Pi; it also comes with a programming interface. This means you can write commands and scripts in Python code to build things in the game automatically. It's a great way to learn Python!  
+Minecraft is a popular sandbox open-world building game. A free version of Minecraft is available for the Raspberry Pi; it also comes with a programming interface. This means you can write commands and scripts in Python code to build things in the game automatically. It's a great way to learn Python!  
 
-If you have already completed ["Getting Started With Programming The Minecraft World"](http://www.raspberrypi.org/learning/getting-started-with-minecraft-pi/) and want to do more, how about creating your own game in Minecraft, a "game in a game"?
+If you have already completed ["Getting Started With Programming The Minecraft World"](http://www.raspberrypi.org/learning/getting-started-with-minecraft-pi/) and want to do more, how about creating your own game in Minecraft, a "game within a game"?
 
 ![Minecraft Pi banner](images/minecraft-pi-banner.png)
 
@@ -12,13 +12,13 @@ The game you are going to create is called "Whac-a-Block", inspired by the origi
 
 ![Minecraft Whac-a-Block](images/minecraft-whac-a-block.png)
 
-This project is split into five parts:
+This project is split into five parts.
 
-1. Create the program - starting your Minecraft Python program and making sure everything is working.
-2. Build the game board - creating the code which will make game board appear in front of the player.
-3. Turn the blocks on - coding the functions to turn the blocks randomly into glowstone.
-4. Whack blocks - turn the blocks back to stone when the player hits them.
-5. Game over - the game is over, how many points did you score?
+1. Create the program: starting your Minecraft Python program and making sure everything is working.
+2. Build the game board: creating the code which will make game board appear in front of the player.
+3. Turn the blocks on: coding the functions to turn the blocks randomly into glowstone.
+4. Whack blocks: turn the blocks back to stone when the player hits them.
+5. Game over: how many points did you score?
 
 ## Create the program
 
@@ -35,10 +35,10 @@ import random
 import time
 ```
 
-- `mcpi.minecraft` - needed to interact with Minecraft: Pi Edition
-- `mcpi.block` - needed to work with Minecraft blocks
-- `random` - used to create random numbers
-- `time` - used to put delays into your program
+- `mcpi.minecraft` is needed to interact with Minecraft: Pi Edition
+- `mcpi.block` is needed to refer to blocks by name rather than ID
+- `random` is used to create random numbers
+- `time` is used to put delays into your program
 
 Create a connection to Minecraft: Pi Edition and post a message to the chat window:
 
@@ -51,7 +51,7 @@ You can run the program now. It won't do much, but if everything is set up corre
 
 ![Message in Minecraft chat window](images/minecraft-message-in-chat.png)
 
-If you haven't done so already, start up Minecraft and create/open a world. Run your program by clicking `Run > Run Module` in IDLE or pressing F5. Any errors will appear in red in the Python shell window.
+If you haven't done so already, start up Minecraft and create/open a world. Run your program by clicking `Run > Run Module` in IDLE or by pressing F5. Any errors will appear in red in the Python shell window.
 
 ## Build the game board
 
@@ -105,7 +105,7 @@ while blocksLit < 9:
 
 From now on, the code will be indented under this `while` loop.
 
-The next step is to randomly turn a block into glowstone. This is more difficult than it sounds; what happens if the block you randomly choose is already glowstone? Your code needs to be able to deal with this. 
+The next step is to randomly turn a block into glowstone. This is more difficult than it sounds: what happens if the block you randomly choose is already glowstone? Your code needs to be able to deal with this. 
 
 The method you will use is a really simple one. The code creates a random position, checks to see if that block is stone, and if it isn't (i.e. it's glowstone), it tries again and creates a new random position. The code will continue to do this until it finds a block which is still unlit.
 
@@ -139,7 +139,7 @@ Use `getBlock(x,y,z)` and an `if` statement to check if the block at the random 
 
 **Note**: Rather than using the ID numbers of blocks (e.g. stone = 1, glowstone = 89), you can use the `block` module, which holds all the block IDs and their names (e.g. `block.STONE.id`).
 
-Run the program by clicking `Run > Run Module` in IDLE or pressing F5; you should see the game board appear. The stone blocks should then, one by one, turn into glowstone and the program should end when all nine are lit.
+Run the program by clicking `Run > Run Module` in IDLE or by pressing F5; you should see the game board appear. The stone blocks should then, one by one, turn into glowstone and the program should end when all nine are lit.
 
 ## Whack blocks
 
@@ -176,11 +176,11 @@ mc.postToChat("Game Over - points = " + str(points))
 
 ![Game over](images/minecraft-game-over.png)
 
-## Stretch - Adding game play!
+## What next?
 
-It might be the end of this worksheet, but it doesn't have to be the end of this game.  
+This might be the end of the worksheet, but it doesn't have to be the end of the game.  
 
-At the moment the gameplay is pretty basic, and there's a lot you can do now you have the basic program set up to make it your own. Here are some ideas to get you started:
+At the moment the gameplay is pretty simple, and there's a lot you can do, now you have the basic program set up, to make it your own. Here are some ideas to get you started:
 
 1. The difficulty of the game is set by the how long the program waits before lighting another block, currently `time.sleep(0.2)`. By increasing this time you make the game easier, and decreasing it will make the game harder. Experiment and see what works best for you.
 
@@ -188,6 +188,6 @@ At the moment the gameplay is pretty basic, and there's a lot you can do now you
 
 1. It is common for video games to start easy and get harder. Can you make the game start easier and the more points you score, the harder it gets?
 
-## API reference
+### API reference
 
 For more extensive documentation of functions, and a full list of block IDs, see an API reference at [stuffaboutcode.com](http://www.stuffaboutcode.com/p/minecraft-api-reference.html).
